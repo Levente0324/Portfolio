@@ -2,12 +2,17 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node ensure-modules.js && next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install --legacy-peer-deps && npm install --save-dev typescript@^5 @types/react@^18 @types/node@^20 tailwindcss@3.4.1 postcss@8.5.6 autoprefixer@10.4.21 && echo '/** @type {import(\"tailwindcss\").Config} */module.exports={content:[\"./src/**/*.{js,ts,jsx,tsx,mdx}\"],theme:{extend:{fontFamily:{hanken:\"Hanken Grotesk\"}}},plugins:[]};' > tailwind.config.js && echo 'module.exports={plugins:{tailwindcss:{},autoprefixer:{}}};' > postcss.config.js && next build --no-lint"
+    "setup": "node ensure-modules.js",
+    "find-modules": "node module-finder.js",
+    "vercel-build": "npm install --legacy-peer-deps && npm install --save tailwindcss@3.4.1 postcss@8.5.6 autoprefixer@10.4.21 && npm install --save-dev typescript@^5 @types/react@^18 @types/node@^20 && node module-finder.js && node ensure-modules.js && next build --no-lint"
   },
   "dependencies": {
     "autoprefixer": "10.4.21",
