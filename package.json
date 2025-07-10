@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install -g tailwindcss postcss autoprefixer && npm install @babel/runtime && next build"
+    "vercel-build": "npm install -g tailwindcss postcss autoprefixer && next build"
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
